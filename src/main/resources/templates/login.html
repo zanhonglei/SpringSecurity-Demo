@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <p th:if="${param.error}"  >错误,请重试</p>
+    <p th:if="${param.logout}" >已成功注销</p>
+    <form method="post" th:action="@{/login}"> <!-- th:action="@{/login}" 和action="/login"的区别 -->
+        <label for="username" />
+        <input name="username" id="username" type="text">
+        <label for="password" />
+        <input name="password" id="password" type="password">
+        <button type="submit">登录</button>
+    </form>
+</body>
+</html>

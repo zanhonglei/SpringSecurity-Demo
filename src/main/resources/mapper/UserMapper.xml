@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zhl.springbootsecuritywebsample.mapper.UserMapper">
+    <resultMap id="userBaseResult" type="cn.zhl.springbootsecuritywebsample.model.SysUser">
+        <result column="USER_ID" property="userId" jdbcType="VARCHAR"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getUserByUserName" resultMap="userBaseResult" >
+        SELECT * FROM T_USER
+        <where>
+            <if test="userName !=null and userName !=''">
+                USER_NAME = #{userName}
+            </if>
+        </where>
+    </select>
+</mapper>
